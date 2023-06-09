@@ -9,7 +9,7 @@ class WelcomePage extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/background_image.jpg'),
+                image: AssetImage('assets/images/background_image.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -20,26 +20,24 @@ class WelcomePage extends StatelessWidget {
               children: [
                 const Spacer(),
                 Image.asset(
-                  'assets/logo.png',
+                  'assets/images/logo.png',
                   width: 200,
                   height: 200,
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'SereneSoul',
+                  'SilenceHill',
                   style: TextStyle(
                     fontSize: 45,
                     fontFamily: 'RougeScript',
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Simplifica tu mente y encuentra la armonía',
+                  'Pon tu mente en la armonía más sana posible',
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
+                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -51,9 +49,8 @@ class WelcomePage extends StatelessWidget {
                   child: const Text(
                     'Comenzar',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 3, 84, 100),
                     ),
                   ),
                 ),
@@ -65,14 +62,12 @@ class WelcomePage extends StatelessWidget {
             top: 16,
             right: 16,
             child: TextButton(
-              onPressed: () {
-                // Acción a realizar cuando se presione el botón "skip"
-              },
+              onPressed: () { },
               child: const Text(
-                'Skip',
+                'Saltar',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  decoration: TextDecoration.underline,
                 ),
               ),
             ),

@@ -3,28 +3,40 @@ import 'package:flutter/material.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+      body: Column(children: [
+        Row(
           children: [
-            Text('Hola Mundo'),
-            Text('Hola Mundo'),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('ASSETS'),
-                  Text('IMÁGENES'),
-                ],
-              ),
+            Image.asset(
+              'assets/images/Vector.png',
+              width: 141,
+              height: 129,
             ),
-            Image(image: AssetImage('assets/img2.jpg'), width: 300, height: 300, fit: BoxFit.cover),
           ],
         ),
-      ),
+        const SizedBox(height: 79),
+        Image.asset(
+          'assets/images/onboarding-image.png',
+          width: 180,
+          height: 168,
+        ),
+        const SizedBox(
+          height: 99,
+        ),
+        Text('Lista de tareas',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w600)),
+        const SizedBox(
+          height: 21,
+        ),
+        const Padding(padding: EdgeInsets.symmetric(horizontal: 32)),
+        const Text(
+          'La mejor forma para que no se te olvide nada es anaotarlo. Guardar tus tareas y ve completando poco a poco para aumentar tu productividad',
+          textAlign: TextAlign.center,
+        )
+      ]),
     );
   }
 }
