@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorio02/app/view/task_list.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -32,9 +33,16 @@ class SplashPage extends StatelessWidget {
           height: 21,
         ),
         const Padding(padding: EdgeInsets.symmetric(horizontal: 32)),
-        const Text(
-          'La mejor forma para que no se te olvide nada es anaotarlo. Guardar tus tareas y ve completando poco a poco para aumentar tu productividad',
-          textAlign: TextAlign.center,
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return const TaskListPage();
+            }));
+          },
+          child: const Text(
+            'La mejor forma para que no se te olvide nada es anaotarlo. Guardar tus tareas y ve completando poco a poco para aumentar tu productividad',
+            textAlign: TextAlign.center,
+          ),
         )
       ]),
     );

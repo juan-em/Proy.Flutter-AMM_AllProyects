@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorio02/app/view/information.dart';
+import 'package:laboratorio02/app/view/start.dart';
+
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -44,7 +47,9 @@ class WelcomePage extends StatelessWidget {
                 const SizedBox(height: 32),
                 ElevatedButton(
                   onPressed: () {
-                    // Acción a realizar cuando se presione el botón "Comenzar"
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return const StartComponent();
+                    }));
                   },
                   child: const Text(
                     'Comenzar',
@@ -55,6 +60,26 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
+
+                //Text: más informacion
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return InformationComponent();
+                    }));
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: Text(
+                      'Más información',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
