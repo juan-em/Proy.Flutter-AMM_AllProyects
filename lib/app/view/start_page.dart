@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorio02/app/view/widgets/parent.dart';
 
 class StartComponent extends StatefulWidget {
   const StartComponent({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class StartComponent extends StatefulWidget {
 
 class _StartComponentState extends State<StartComponent> {
   String name = '';
-
+  List<String> array = ["user1", "user2", "user3"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +85,7 @@ class _StartComponentState extends State<StartComponent> {
                   fontSize: 16,
                 ),
               ),
+              ParentWidget(array: array),
             ],
           ),
         ),

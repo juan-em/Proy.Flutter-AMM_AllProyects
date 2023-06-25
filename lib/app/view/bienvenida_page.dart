@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:laboratorio02/app/view/information.dart';
-import 'package:laboratorio02/app/view/start.dart';
-
+import 'package:laboratorio02/app/view/information_page.dart';
+import 'package:laboratorio02/app/view/start_page.dart';
+import 'package:laboratorio02/app/view/favorities_page.dart';
+import 'package:laboratorio02/app/view/widgets/parent.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -87,9 +88,13 @@ class WelcomePage extends StatelessWidget {
             top: 16,
             right: 16,
             child: TextButton(
-              onPressed: () { },
+              onPressed: () { 
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return FavoritePage();
+                    }));
+              },
               child: const Text(
-                'Saltar',
+                'Favoritos',
                 style: TextStyle(
                   fontSize: 16,
                   decoration: TextDecoration.underline,

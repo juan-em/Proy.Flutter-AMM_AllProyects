@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:laboratorio02/app/view/task_list.dart';
+import 'package:laboratorio02/app/view/task_list/task_list_page.dart';
+import 'package:laboratorio02/app/view/components/shape.dart';
+import 'package:laboratorio02/app/view/components/h1.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -8,11 +10,11 @@ class SplashPage extends StatelessWidget {
       body: Column(children: [
         Row(
           children: [
-            Image.asset(
-              'assets/images/Vector.png',
-              width: 141,
-              height: 129,
-            ),
+            const Row(
+              children: [
+                Shape()
+              ],
+            )
           ],
         ),
         const SizedBox(height: 79),
@@ -24,11 +26,7 @@ class SplashPage extends StatelessWidget {
         const SizedBox(
           height: 99,
         ),
-        Text('Lista de tareas',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(fontSize: 18, fontWeight: FontWeight.w600)),
+        const H1('Lista de tareas'),
         const SizedBox(
           height: 21,
         ),
