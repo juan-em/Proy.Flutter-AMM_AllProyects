@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:laboratorio02/app/model/task.dart';
 import 'package:laboratorio02/app/view/components/h1.dart';
 import 'package:laboratorio02/app/view/components/shape.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TaskListPage extends StatefulWidget {
   const TaskListPage({super.key});
@@ -10,12 +13,9 @@ class TaskListPage extends StatefulWidget {
   State<TaskListPage> createState() => _TaskListPageState();
 }
 
+
 class _TaskListPageState extends State<TaskListPage> {
-  final taskList = <Task>[
-    Task('Tarea1'), 
-    Task('Tarea2'), 
-    Task('Tarea3')
-  ];
+  final taskList = <Task>[];
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +75,77 @@ class _TaskListPageState extends State<TaskListPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: _showNewTaskModal,
         child: const Icon(Icons.add, size: 50),
       ),
     );
   }
+
+  void _showNewTaskModal() {
+    showModalBottomSheet(
+      context: context, 
+      isScrollControlled: true,
+      builder: (_) => _NewTaskModal(onTaskCreated: (Task task) {
+        
+        setState(() {
+          taskList.add(task);
+          
+        });
+      },));
+  }
 }
+
+class _NewTaskModal extends StatelessWidget {
+  _NewTaskModal({super.key, required this.onTaskCreated});
+
+  final _controller = TextEditingController();
+  final void Function(Task task) onTaskCreated;
+
+  @override
+  Widget build (BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 33,
+        vertical: 23
+      ),
+      decoration: const BoxDecoration(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(21)),
+            color: Colors.white
+         ),
+
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          H1('Nueva tarea'),
+          const SizedBox(height: 26,),
+          TextField(
+            controller: _controller,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16)
+              ),
+              hintText: 'Descripción de la tarea'
+            ),
+          ),
+          TextField(),
+          const SizedBox(height:26),
+          ElevatedButton(
+            onPressed: () {
+              if (_controller.text.isNotEmpty) {
+                final task = Task(_controller.text);
+                onTaskCreated(task);
+                Navigator.of(context).pop();
+              }
+            }, 
+            child: Text('Guardar'))
+        ]),
+    );
+  }
+}
+
 
 class _TaskItem extends StatelessWidget {
   const _TaskItem(this.task, {super.key, this.onTap});
